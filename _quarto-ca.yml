@@ -1,0 +1,32 @@
+# Perfil para Catalán
+project:
+  output-dir: _site/ca
+
+metadata-files:
+  - _i18n/ca.yml
+
+format:
+  html:
+    lang: ca
+
+website:
+  title: "Seminari d'Estudiants de Matemàtiques UB"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Inici
+      - href: seminarios.qmd
+        text: Seminaris
+      - href: about.qmd
+        text: Sobre nosaltres
+    right:
+      - text: "🌐 CA"
+        menu:
+          - text: "Català"
+            href: ../ca/index.html
+          - text: "Castellano"
+            href: ../es/index.html
+          - text: "English"
+            href: ../en/index.html
+  page-footer:
+    center: "Seminari Matemàtiques UB - Universitat de Barcelona"

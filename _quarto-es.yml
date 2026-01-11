@@ -1,0 +1,32 @@
+# Perfil para Castellano
+project:
+  output-dir: _site/es
+
+metadata-files:
+  - _i18n/es.yml
+
+format:
+  html:
+    lang: es
+
+website:
+  title: "Seminario de Estudiantes de Matemáticas UB"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Inicio
+      - href: seminarios.qmd
+        text: Seminarios
+      - href: about.qmd
+        text: Sobre nosotros
+    right:
+      - text: "🌐 ES"
+        menu:
+          - text: "Català"
+            href: ../ca/index.html
+          - text: "Castellano"
+            href: ../es/index.html
+          - text: "English"
+            href: ../en/index.html
+  page-footer:
+    center: "Seminario Matemáticas UB - Universitat de Barcelona"

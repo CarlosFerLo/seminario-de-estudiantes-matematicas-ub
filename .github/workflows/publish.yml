@@ -54,8 +54,31 @@ jobs:
           done
         continue-on-error: true
 
-      - name: Render Quarto Website
-        uses: quarto-dev/quarto-actions/render@v2
+      - name: Render Quarto Website (Spanish)
+        run: quarto render --profile es
+
+      - name: Render Quarto Website (Catalan)
+        run: quarto render --profile ca
+
+      - name: Render Quarto Website (English)
+        run: quarto render --profile en
+
+      - name: Create redirect to Spanish
+        run: |
+          cat > _site/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <meta charset="utf-8">
+              <title>Seminario de Estudiantes de Matemáticas UB</title>
+              <meta http-equiv="refresh" content="0; url=es/index.html">
+              <link rel="canonical" href="es/index.html">
+          </head>
+          <body>
+              <p>Redirecting to <a href="es/index.html">Spanish version</a>...</p>
+          </body>
+          </html>
+          EOF
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

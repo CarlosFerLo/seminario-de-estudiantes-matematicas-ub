@@ -30,3 +30,6 @@ Thumbs.db
 *.temp
 
 /.quarto/
+
+# Python
+__pycache__

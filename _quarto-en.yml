@@ -1,0 +1,32 @@
+# Profile for English
+project:
+  output-dir: _site/en
+
+metadata-files:
+  - _i18n/en.yml
+
+format:
+  html:
+    lang: en
+
+website:
+  title: "Mathematics Student Seminar UB"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: seminarios.qmd
+        text: Seminars
+      - href: about.qmd
+        text: About us
+    right:
+      - text: "🌐 EN"
+        menu:
+          - text: "Català"
+            href: ../ca/index.html
+          - text: "Castellano"
+            href: ../es/index.html
+          - text: "English"
+            href: ../en/index.html
+  page-footer:
+    center: "Mathematics Seminar UB - University of Barcelona"

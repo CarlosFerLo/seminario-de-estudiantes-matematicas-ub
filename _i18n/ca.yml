@@ -1,0 +1,73 @@
+# ===========================================
+# Traduccions - Català
+# ===========================================
+# Ús en .qmd: {{< var t.clau >}}
+# Ús en Python: t['clau']
+# ===========================================
+
+t:
+  # General
+  bienvenidos: "Benvinguts"
+  seminario_nombre: "Seminari d'Estudiants de Matemàtiques"
+  universidad: "Universitat de Barcelona"
+  
+  # Navegació
+  inicio: "Inici"
+  seminarios: "Seminaris"
+  sobre_nosotros: "Sobre nosaltres"
+  idioma: "Idioma"
+  
+  # Pàgina principal
+  proximas_sesiones: "📅 Properes sessions"
+  no_sesiones: "No hi ha sessions programades. Consulta la pàgina de [Seminaris](seminarios.qmd) per veure l'arxiu complet."
+  seminarios_por_curso: "Seminaris per Curs Acadèmic"
+  curso: "Curs"
+  quieres_participar: "Vols participar?"
+  participar_texto: "Si estàs interessat en fer una xerrada o proposar un tema, contacta amb nosaltres a través del correu del seminari o apropa't a qualsevol dels organitzadors."
+  enlaces_utiles: "Enllaços útils"
+  
+  # Taules i llistats
+  seminario: "Seminari"
+  estado: "Estat"
+  fecha: "Data"
+  hora: "Hora"
+  lugar: "Lloc"
+  ponente: "Ponent"
+  titulo: "Títol"
+  sesiones: "Sessions"
+  sesion: "Sessió"
+  materiales: "Materials"
+  bibliografia: "Bibliografia"
+  
+  # Estats
+  planificado: "Planificat"
+  en_curso: "En curs"
+  completado: "Completat"
+  planificada: "Planificada"
+  completada: "Completada"
+  cancelada: "Cancel·lada"
+  
+  # Pàgina de seminaris
+  todos_seminarios: "Tots els Seminaris"
+  archivo_descripcion: "Aquesta pàgina conté l'arxiu complet de tots els seminaris realitzats, organitzats per curs acadèmic."
+  como_anadir: "Com afegir un nou seminari"
+  anadir_texto: "Per afegir un nou seminari, consulta la"
+  guia_contribucion: "guia de contribució"
+  resumen_rapido: "Resum ràpid"
+  
+  # Sobre nosaltres
+  el_seminario: "El Seminari"
+  organizacion: "Organització"
+  organizadores_actuales: "Organitzadors actuals"
+  fundador: "Fundador"
+  contacto: "Contacte"
+  como_contribuir: "Com contribuir"
+  contribuir_texto: "Aquest lloc web està gestionat a través de GitHub. Si vols contribuir amb materials o correccions:"
+  fork_repo: "Fes un fork del"
+  repositorio: "repositori"
+  anade_cambios: "Afegeix els teus canvis"
+  crea_pr: "Crea un Pull Request"
+  consulta_contributing: "Consulta el fitxer `CONTRIBUTING.md` al repositori per a més detalls."
+  
+  # Footer
+  footer_texto: "Seminari Matemàtiques UB - Universitat de Barcelona"

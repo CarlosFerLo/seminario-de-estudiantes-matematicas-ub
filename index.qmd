@@ -1,20 +1,46 @@
 ---
-title: "Seminario de Estudiantes de Matemáticas"
-subtitle: "Universitat de Barcelona"
+title-block-banner: false
 ---
+
+::: {.content-visible when-profile="es"}
+# Seminario de Estudiantes de Matemáticas {.unnumbered}
+*Universitat de Barcelona*
 
 ## Bienvenidos
 
 El **Seminario de Estudiantes de Matemáticas** es una iniciativa organizada por estudiantes de la Facultad de Matemáticas de la Universitat de Barcelona. Nuestro objetivo es crear un espacio donde los estudiantes puedan presentar y discutir temas matemáticos de interés, fomentando el aprendizaje colaborativo y la divulgación.
+:::
 
-## Próximas Sesiones
+::: {.content-visible when-profile="ca"}
+# Seminari d'Estudiants de Matemàtiques {.unnumbered}
+*Universitat de Barcelona*
+
+## Benvinguts
+
+El **Seminari d'Estudiants de Matemàtiques** és una iniciativa organitzada per estudiants de la Facultat de Matemàtiques de la Universitat de Barcelona. El nostre objectiu és crear un espai on els estudiants puguin presentar i discutir temes matemàtics d'interès, fomentant l'aprenentatge col·laboratiu i la divulgació.
+:::
+
+::: {.content-visible when-profile="en"}
+# Mathematics Student Seminar {.unnumbered}
+*University of Barcelona*
+
+## Welcome
+
+The **Mathematics Student Seminar** is an initiative organized by students of the Faculty of Mathematics at the University of Barcelona. Our goal is to create a space where students can present and discuss mathematical topics of interest, fostering collaborative learning and outreach.
+:::
 
 ```{python}
 #| echo: false
 #| output: asis
+import sys
+sys.path.insert(0, '_lib')
+
 import yaml
 from pathlib import Path
 from datetime import datetime
+from i18n import get_translations
+
+t = get_translations()
 
 # Buscar todos los seminarios
 seminarios_dir = Path('seminarios')
@@ -70,36 +96,43 @@ except:
 
 if proximas:
     print("::: {.callout-tip}")
-    print("## 📅 Próximas sesiones")
+    print(f"## {t['proximas_sesiones']}")
     print("")
     for p in proximas[:3]:  # Mostrar máximo 3
         fecha = p['sesion'].get('fecha', 'TBD')
         hora = p['sesion'].get('hora', '')
         lugar = p['sesion'].get('lugar', '')
         ponente = p['sesion'].get('ponente', '')
-        print(f"**{p['seminario']}** - Sesión {p['sesion'].get('numero', '')}: {p['sesion'].get('titulo', '')}")
+        print(f"**{p['seminario']}** - {t['sesiones']} {p['sesion'].get('numero', '')}: {p['sesion'].get('titulo', '')}")
         print(f"")
         print(f"- 📆 {fecha} {hora}")
         if ponente:
-            print(f"- 🎤 Ponente: {ponente}")
+            print(f"- 🎤 {t['ponente']}: {ponente}")
         if lugar:
             print(f"- 📍 {lugar}")
         print("")
     print(":::")
 else:
     print("::: {.callout-note}")
-    print("## Próximas sesiones")
-    print("No hay sesiones programadas. Consulta la página de [Seminarios](seminarios.qmd) para ver el archivo completo.")
+    print(f"## {t['proximas_sesiones']}")
+    print(t['no_sesiones'])
     print(":::")
 ```
-
-## Seminarios por Curso Académico
 
 ```{python}
 #| echo: false
 #| output: asis
+import sys
+sys.path.insert(0, '_lib')
+
 import yaml
 from pathlib import Path
+from i18n import get_translations
+
+t = get_translations()
+
+print(f"## {t['seminarios_por_curso']}")
+print("")
 
 # Buscar todos los seminarios
 seminarios_dir = Path('seminarios')
@@ -167,9 +200,9 @@ estado_icon = {
 }
 
 for curso in cursos_ordenados:
-    print(f"### Curso {curso}")
+    print(f"### {t['curso']} {curso}")
     print("")
-    print("| Seminario | Estado |")
+    print(f"| {t['seminario']} | {t['estado']} |")
     print("|-----------|--------|")
     
     for sem in cursos[curso]:
@@ -183,11 +216,14 @@ for curso in cursos_ordenados:
         else:
             titulo_link = f"[{titulo}](seminarios/{sem['_carpeta']}/{sem['_pdf']})"
         
-        print(f"| 📘 **{titulo_link}** | {icon} {estado} |")
+        # Traducir estado
+        estado_trad = t.get(estado.replace('-', '_'), estado)
+        print(f"| 📘 **{titulo_link}** | {icon} {estado_trad} |")
     
     print("")
 ```
 
+::: {.content-visible when-profile="es"}
 ## ¿Quieres participar?
 
 Si estás interesado en dar una charla o proponer un tema, contacta con nosotros a través del correo del seminario o acércate a cualquiera de los organizadores.
@@ -195,4 +231,28 @@ Si estás interesado en dar una charla o proponer un tema, contacta con nosotros
 ## Enlaces útiles
 
 - [Facultat de Matemàtiques i Informàtica - UB](https://mat.ub.edu/)
-- [Repositorio GitHub del seminario](https://github.com/carlosferlo/seminario-de-estudiantes-matematicas-ub)
+- [Repositorio GitHub del seminario]({{< var enlaces.github.repo >}})
+:::
+
+::: {.content-visible when-profile="ca"}
+## Vols participar?
+
+Si estàs interessat en fer una xerrada o proposar un tema, contacta amb nosaltres a través del correu del seminari o apropa't a qualsevol dels organitzadors.
+
+## Enllaços útils
+
+- [Facultat de Matemàtiques i Informàtica - UB](https://mat.ub.edu/)
+- [Repositori GitHub del seminari]({{< var enlaces.github.repo >}})
+:::
+
+::: {.content-visible when-profile="en"}
+## Want to participate?
+
+If you are interested in giving a talk or proposing a topic, contact us through the seminar email or approach any of the organizers.
+
+## Useful links
+
+- [Faculty of Mathematics and Computer Science - UB](https://mat.ub.edu/)
+- [Seminar GitHub repository]({{< var enlaces.github.repo >}})
+:::
+

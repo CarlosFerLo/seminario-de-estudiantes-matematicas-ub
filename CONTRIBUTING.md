@@ -94,8 +94,44 @@ mkdir seminarios/2024-primavera-algebra
 
 ```bash
 pip install pyyaml
-quarto preview
+quarto preview --profile es  # Castellano
+quarto preview --profile ca  # Català
+quarto preview --profile en  # English
+
+# O construir todos los idiomas:
+./build.sh
 ```
+
+## 🌍 Sistema multilingüe
+
+El sitio soporta tres idiomas (es, ca, en). No necesitas hacer nada especial para los seminarios - el contenido de `seminario.yml` se muestra igual en todos los idiomas.
+
+Si necesitas añadir nuevas traducciones para la interfaz:
+
+1. Edita los archivos YAML en `_i18n/` (`es.yml`, `ca.yml`, `en.yml`)
+2. Añade la clave bajo la sección `t:` en cada archivo
+
+Ejemplo en `_i18n/es.yml`:
+```yaml
+t:
+  mi_nueva_clave: "Mi texto en español"
+```
+
+Ejemplo en `_i18n/ca.yml`:
+```yaml
+t:
+  mi_nueva_clave: "El meu text en català"
+```
+
+Ejemplo en `_i18n/en.yml`:
+```yaml
+t:
+  mi_nueva_clave: "My text in English"
+```
+
+Luego úsala:
+- En archivos `.qmd`: `{{< var t.mi_nueva_clave >}}`
+- En código Python: `t['mi_nueva_clave']` (importando `from i18n import get_translations; t = get_translations()`)
 
 ## ❓ ¿Preguntas?
 

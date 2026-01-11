@@ -1,16 +1,36 @@
 ---
-title: "Archivo de Seminarios"
+title-block-banner: false
 ---
 
-## Todos los Seminarios
+::: {.content-visible when-profile="es"}
+# Archivo de Seminarios {.unnumbered}
 
 Esta página contiene el archivo completo de todos los seminarios realizados, organizados por curso académico.
+:::
+
+::: {.content-visible when-profile="ca"}
+# Arxiu de Seminaris {.unnumbered}
+
+Aquesta pàgina conté l'arxiu complet de tots els seminaris realitzats, organitzats per curs acadèmic.
+:::
+
+::: {.content-visible when-profile="en"}
+# Seminar Archive {.unnumbered}
+
+This page contains the complete archive of all seminars, organized by academic year.
+:::
 
 ```{python}
 #| echo: false
 #| output: asis
+import sys
+sys.path.insert(0, '_lib')
+
 import yaml
 from pathlib import Path
+from i18n import get_translations
+
+t = get_translations()
 
 # Buscar todos los seminarios
 seminarios_dir = Path('seminarios')
@@ -83,13 +103,13 @@ cursos_ordenados = sorted(cursos.keys(), reverse=True)
 
 # Estado badges
 estado_badge = {
-    'planificado': '🗓️ Planificado',
-    'en-curso': '🔄 En curso',
-    'completado': '✅ Completado'
+    'planificado': f"🗓️ {t['planificado']}",
+    'en-curso': f"🔄 {t['en_curso']}",
+    'completado': f"✅ {t['completado']}"
 }
 
 for curso in cursos_ordenados:
-    print(f"## Curso {curso}")
+    print(f"## {t['curso']} {curso}")
     print("")
     
     for sem in cursos[curso]:
@@ -118,12 +138,13 @@ for curso in cursos_ordenados:
             # Mostrar calendario de sesiones si existe
             sesiones = sem.get('sesiones', [])
             if sesiones:
-                print("**Sesiones:**")
+                print(f"**{t['sesiones']}:**")
                 print("")
-                print("| # | Fecha | Título | Ponente | Estado |")
+                print(f"| # | {t['fecha']} | {t['titulo']} | {t['ponente']} | {t['estado']} |")
                 print("|---|-------|--------|---------|--------|")
                 for s in sesiones:
-                    s_estado = {'completada': '✅', 'planificada': '📅', 'cancelada': '❌'}.get(s.get('estado', ''), '📅')
+                    s_estado_key = s.get('estado', '')
+                    s_estado = {'completada': '✅', 'planificada': '📅', 'cancelada': '❌'}.get(s_estado_key, '📅')
                     fecha = s.get('fecha', 'TBD')
                     ponente = s.get('ponente', '-')
                     print(f"| {s.get('numero', '-')} | {fecha} | {s.get('titulo', '')} | {ponente} | {s_estado} |")
@@ -133,6 +154,7 @@ for curso in cursos_ordenados:
         print("")
 ```
 
+::: {.content-visible when-profile="es"}
 ## Cómo añadir un nuevo seminario
 
 Para añadir un nuevo seminario, consulta la [guía de contribución](CONTRIBUTING.md).
@@ -143,3 +165,30 @@ Para añadir un nuevo seminario, consulta la [guía de contribución](CONTRIBUTI
 2. Copia la plantilla: `cp _templates/seminario-nuevo/* seminarios/tu-carpeta/`
 3. Edita `seminario.yml` con la información del seminario
 4. ¡Listo! El seminario aparecerá automáticamente aquí
+:::
+
+::: {.content-visible when-profile="ca"}
+## Com afegir un nou seminari
+
+Per afegir un nou seminari, consulta la [guia de contribució](CONTRIBUTING.md).
+
+**Resum ràpid:**
+
+1. Crea una carpeta: `seminarios/YYYY-semestre-tema/`
+2. Copia la plantilla: `cp _templates/seminario-nuevo/* seminarios/la-teva-carpeta/`
+3. Edita `seminario.yml` amb la informació del seminari
+4. Llest! El seminari apareixerà automàticament aquí
+:::
+
+::: {.content-visible when-profile="en"}
+## How to add a new seminar
+
+To add a new seminar, check the [contribution guide](CONTRIBUTING.md).
+
+**Quick summary:**
+
+1. Create a folder: `seminarios/YYYY-semester-topic/`
+2. Copy the template: `cp _templates/seminario-nuevo/* seminarios/your-folder/`
+3. Edit `seminario.yml` with the seminar information
+4. Done! The seminar will automatically appear here
+:::

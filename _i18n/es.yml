@@ -1,0 +1,73 @@
+# ===========================================
+# Traducciones - Español
+# ===========================================
+# Uso en .qmd: {{< var t.clave >}}
+# Uso en Python: t['clave']
+# ===========================================
+
+t:
+  # General
+  bienvenidos: "Bienvenidos"
+  seminario_nombre: "Seminario de Estudiantes de Matemáticas"
+  universidad: "Universitat de Barcelona"
+  
+  # Navegación
+  inicio: "Inicio"
+  seminarios: "Seminarios"
+  sobre_nosotros: "Sobre nosotros"
+  idioma: "Idioma"
+  
+  # Página principal
+  proximas_sesiones: "📅 Próximas sesiones"
+  no_sesiones: "No hay sesiones programadas. Consulta la página de [Seminarios](seminarios.qmd) para ver el archivo completo."
+  seminarios_por_curso: "Seminarios por Curso Académico"
+  curso: "Curso"
+  quieres_participar: "¿Quieres participar?"
+  participar_texto: "Si estás interesado en dar una charla o proponer un tema, contacta con nosotros a través del correo del seminario o acércate a cualquiera de los organizadores."
+  enlaces_utiles: "Enlaces útiles"
+  
+  # Tablas y listados
+  seminario: "Seminario"
+  estado: "Estado"
+  fecha: "Fecha"
+  hora: "Hora"
+  lugar: "Lugar"
+  ponente: "Ponente"
+  titulo: "Título"
+  sesiones: "Sesiones"
+  sesion: "Sesión"
+  materiales: "Materiales"
+  bibliografia: "Bibliografía"
+  
+  # Estados
+  planificado: "Planificado"
+  en_curso: "En curso"
+  completado: "Completado"
+  planificada: "Planificada"
+  completada: "Completada"
+  cancelada: "Cancelada"
+  
+  # Página de seminarios
+  todos_seminarios: "Todos los Seminarios"
+  archivo_descripcion: "Esta página contiene el archivo completo de todos los seminarios realizados, organizados por curso académico."
+  como_anadir: "Cómo añadir un nuevo seminario"
+  anadir_texto: "Para añadir un nuevo seminario, consulta la"
+  guia_contribucion: "guía de contribución"
+  resumen_rapido: "Resumen rápido"
+  
+  # Sobre nosotros
+  el_seminario: "El Seminario"
+  organizacion: "Organización"
+  organizadores_actuales: "Organizadores actuales"
+  fundador: "Fundador"
+  contacto: "Contacto"
+  como_contribuir: "Cómo contribuir"
+  contribuir_texto: "Este sitio web está gestionado a través de GitHub. Si quieres contribuir con materiales o correcciones:"
+  fork_repo: "Haz un fork del"
+  repositorio: "repositorio"
+  anade_cambios: "Añade tus cambios"
+  crea_pr: "Crea un Pull Request"
+  consulta_contributing: "Consulta el archivo `CONTRIBUTING.md` en el repositorio para más detalles."
+  
+  # Footer
+  footer_texto: "Seminario Matemáticas UB - Universitat de Barcelona"

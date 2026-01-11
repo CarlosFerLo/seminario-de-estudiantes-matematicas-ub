@@ -1,0 +1,73 @@
+# ===========================================
+# Translations - English
+# ===========================================
+# Usage in .qmd: {{< var t.key >}}
+# Usage in Python: t['key']
+# ===========================================
+
+t:
+  # General
+  bienvenidos: "Welcome"
+  seminario_nombre: "Mathematics Student Seminar"
+  universidad: "University of Barcelona"
+  
+  # Navigation
+  inicio: "Home"
+  seminarios: "Seminars"
+  sobre_nosotros: "About us"
+  idioma: "Language"
+  
+  # Main page
+  proximas_sesiones: "📅 Upcoming sessions"
+  no_sesiones: "No scheduled sessions. Check the [Seminars](seminarios.qmd) page for the full archive."
+  seminarios_por_curso: "Seminars by Academic Year"
+  curso: "Academic Year"
+  quieres_participar: "Want to participate?"
+  participar_texto: "If you are interested in giving a talk or proposing a topic, contact us through the seminar email or approach any of the organizers."
+  enlaces_utiles: "Useful links"
+  
+  # Tables and listings
+  seminario: "Seminar"
+  estado: "Status"
+  fecha: "Date"
+  hora: "Time"
+  lugar: "Location"
+  ponente: "Speaker"
+  titulo: "Title"
+  sesiones: "Sessions"
+  sesion: "Session"
+  materiales: "Materials"
+  bibliografia: "Bibliography"
+  
+  # States
+  planificado: "Planned"
+  en_curso: "In progress"
+  completado: "Completed"
+  planificada: "Planned"
+  completada: "Completed"
+  cancelada: "Cancelled"
+  
+  # Seminars page
+  todos_seminarios: "All Seminars"
+  archivo_descripcion: "This page contains the complete archive of all seminars, organized by academic year."
+  como_anadir: "How to add a new seminar"
+  anadir_texto: "To add a new seminar, check the"
+  guia_contribucion: "contribution guide"
+  resumen_rapido: "Quick summary"
+  
+  # About us
+  el_seminario: "The Seminar"
+  organizacion: "Organization"
+  organizadores_actuales: "Current organizers"
+  fundador: "Founder"
+  contacto: "Contact"
+  como_contribuir: "How to contribute"
+  contribuir_texto: "This website is managed through GitHub. If you want to contribute materials or corrections:"
+  fork_repo: "Fork the"
+  repositorio: "repository"
+  anade_cambios: "Add your changes"
+  crea_pr: "Create a Pull Request"
+  consulta_contributing: "Check the `CONTRIBUTING.md` file in the repository for more details."
+  
+  # Footer
+  footer_texto: "Mathematics Seminar UB - University of Barcelona"

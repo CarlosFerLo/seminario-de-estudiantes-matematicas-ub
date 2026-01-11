@@ -1,14 +1,17 @@
 ---
-title: "Sobre nosotros"
+title-block-banner: false
 ---
+
+::: {.content-visible when-profile="es"}
+# Sobre nosotros {.unnumbered}
 
 ## El Seminario
 
 El {{< var seminario.nombre >}} nació con el objetivo de poder estudiar temas de matemáticas que interesaran a los estudiantes pero que no se daban durante la carrera. El seminario siempre ha sido impulsado por los estudiantes, cada semestre elegimos un tema, preparamos el temario de diversas sesiones que se hacen de manera semanal por voluntarios.
 
 ## Organización
-- **Organizadores actuales**: {{< var organizadores.actuales.0.nombre >}} y {{< var organizadores.actuales.1.nombre >}}
-- **Fundador**: {{< var organizadores.fundador >}}
+- **Organizadores actuales**: Abel Salinas y Carlos Fernández
+- **Fundador**: Roger Garrido
 
 ## Contacto
 
@@ -25,3 +28,60 @@ Este sitio web está gestionado a través de GitHub. Si quieres contribuir con m
 3. Crea un Pull Request
 
 Consulta el archivo `CONTRIBUTING.md` en el repositorio para más detalles.
+:::
+
+::: {.content-visible when-profile="ca"}
+# Sobre nosaltres {.unnumbered}
+
+## El Seminari
+
+El {{< var seminario.nombre >}} va néixer amb l'objectiu de poder estudiar temes de matemàtiques que interessessin als estudiants però que no es donaven durant la carrera. El seminari sempre ha estat impulsat pels estudiants, cada semestre escollim un tema, preparem el temari de diverses sessions que es fan de manera setmanal per voluntaris.
+
+## Organització
+- **Organitzadors actuals**: Abel Salinas i Carlos Fernández
+- **Fundador**: Roger Garrido
+
+## Contacte
+
+- **Email**: [{{< var contacto.email >}}](mailto:{{< var contacto.email >}})
+- **GitHub**: [{{< var enlaces.github.repo >}}]({{< var enlaces.github.repo >}})
+- **Ubicació**: {{< var seminario.ubicacion >}}
+
+## Com contribuir
+
+Aquest lloc web està gestionat a través de GitHub. Si vols contribuir amb materials o correccions:
+
+1. Fes un fork del [repositori]({{< var enlaces.github.repo >}})
+2. Afegeix els teus canvis
+3. Crea un Pull Request
+
+Consulta el fitxer `CONTRIBUTING.md` al repositori per a més detalls.
+:::
+
+::: {.content-visible when-profile="en"}
+# About us {.unnumbered}
+
+## The Seminar
+
+The {{< var seminario.nombre >}} was born with the goal of studying mathematical topics that interested students but were not covered during the degree. The seminar has always been driven by students; each semester we choose a topic and prepare the syllabus for various weekly sessions led by volunteers.
+
+## Organization
+- **Current organizers**: Abel Salinas and Carlos Fernández
+- **Founder**: Roger Garrido
+
+## Contact
+
+- **Email**: [{{< var contacto.email >}}](mailto:{{< var contacto.email >}})
+- **GitHub**: [{{< var enlaces.github.repo >}}]({{< var enlaces.github.repo >}})
+- **Location**: {{< var seminario.ubicacion >}}
+
+## How to contribute
+
+This website is managed through GitHub. If you want to contribute materials or corrections:
+
+1. Fork the [repository]({{< var enlaces.github.repo >}})
+2. Add your changes
+3. Create a Pull Request
+
+Check the `CONTRIBUTING.md` file in the repository for more details.
+:::
