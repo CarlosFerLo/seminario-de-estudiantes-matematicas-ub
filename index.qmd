@@ -76,9 +76,12 @@ if proximas:
         fecha = p['sesion'].get('fecha', 'TBD')
         hora = p['sesion'].get('hora', '')
         lugar = p['sesion'].get('lugar', '')
+        ponente = p['sesion'].get('ponente', '')
         print(f"**{p['seminario']}** - Sesión {p['sesion'].get('numero', '')}: {p['sesion'].get('titulo', '')}")
         print(f"")
         print(f"- 📆 {fecha} {hora}")
+        if ponente:
+            print(f"- 🎤 Ponente: {ponente}")
         if lugar:
             print(f"- 📍 {lugar}")
         print("")
@@ -124,7 +127,6 @@ for carpeta in seminarios_dir.iterdir():
                         'info': {
                             'titulo': tema,
                             'subtitulo': f'{semestre.title()} {año}',
-                            'ponente': '-',
                             'estado': 'completado'
                         },
                         '_carpeta': carpeta.name,
@@ -167,22 +169,21 @@ estado_icon = {
 for curso in cursos_ordenados:
     print(f"### Curso {curso}")
     print("")
-    print("| Tema | Ponente | Estado | Materiales |")
-    print("|------|---------|--------|------------|")
+    print("| Seminario | Estado |")
+    print("|-----------|--------|")
     
     for sem in cursos[curso]:
         info = sem.get('info', {})
         titulo = info.get('titulo', 'Sin título')
-        ponente = info.get('ponente', '-')
         estado = info.get('estado', 'planificado')
         icon = estado_icon.get(estado, '📅')
         
         if sem['_tipo'] == 'completo':
-            link = f"[Ver seminario](seminarios/{sem['_carpeta']}/)"
+            titulo_link = f"[{titulo}](seminarios/{sem['_carpeta']}/)"
         else:
-            link = f"[PDF](seminarios/{sem['_carpeta']}/{sem['_pdf']})"
+            titulo_link = f"[{titulo}](seminarios/{sem['_carpeta']}/{sem['_pdf']})"
         
-        print(f"| **{titulo}** | {ponente} | {icon} {estado} | {link} |")
+        print(f"| 📘 **{titulo_link}** | {icon} {estado} |")
     
     print("")
 ```

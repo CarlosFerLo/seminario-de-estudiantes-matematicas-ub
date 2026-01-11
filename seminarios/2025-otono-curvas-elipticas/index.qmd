@@ -1,8 +1,5 @@
 ---
-title: "{{< meta info.titulo >}}"
-subtitle: "{{< meta info.subtitulo >}}"
-metadata-files:
-  - seminario.yml
+title: "Seminario"
 ---
 
 ```{python}
@@ -10,7 +7,6 @@ metadata-files:
 #| output: asis
 import yaml
 from pathlib import Path
-from datetime import datetime
 
 # Cargar datos del seminario
 with open('seminario.yml', 'r', encoding='utf-8') as f:
@@ -28,10 +24,19 @@ estado_badge = {
     'completado': '✅ Completado'
 }
 
-print(f"""
+# Formatear organizadores
+organizadores = info.get('organizadores', [])
+if isinstance(organizadores, str):
+    organizadores = [organizadores]
+organizadores_str = ', '.join(organizadores) if organizadores else 'Por determinar'
+
+print(f"""# {info.get('titulo', 'Seminario')}
+
+*{info.get('subtitulo', '')}*
+
 ::: {{.callout-note}}
 ## {estado_badge.get(info.get('estado', 'planificado'), info.get('estado'))}
-**Ponente**: {info.get('ponente', 'Por determinar')}
+**Organizadores**: {organizadores_str}
 :::
 
 ## Descripción
@@ -40,13 +45,12 @@ print(f"""
 
 ## 📅 Calendario de Sesiones
 
-| # | Fecha | Título | Estado | Materiales |
-|---|-------|--------|--------|------------|""")
+| # | Fecha | Título | Ponente | Estado | Materiales |
+|---|-------|--------|---------|--------|------------|""")
 
 for s in sesiones:
     estado_icon = {'completada': '✅', 'planificada': '📅', 'cancelada': '❌'}.get(s.get('estado'), '📅')
     
-    # Construir links de materiales
     materiales_links = []
     if s.get('notas_pdf'):
         materiales_links.append(f"[PDF]({s['notas_pdf']})")
@@ -59,10 +63,21 @@ for s in sesiones:
     if hora_str:
         fecha_str = f"{fecha_str} {hora_str}"
     
-    print(f"| {s.get('numero', '-')} | {fecha_str} | **{s.get('titulo', 'Sin título')}** | {estado_icon} {s.get('estado', 'planificada')} | {materiales_str} |")
+    ponente = s.get('ponente', '-')
+    
+    print(f"| {s.get('numero', '-')} | {fecha_str} | **{s.get('titulo', 'Sin título')}** | {ponente} | {estado_icon} | {materiales_str} |")
+
+# Participantes
+participantes = data.get('participantes', [])
+if participantes:
+    print(f"""
+## 👥 Participantes ({len(participantes)})
+
+{' · '.join(participantes)}
+""")
 
 # Materiales generales
-notas_gen = materiales.get('notas_generales', {})
+notas_gen = materiales.get('notas_generales', {}) or {}
 ejercicios = materiales.get('ejercicios')
 
 if notas_gen.get('pdf') or notas_gen.get('tex') or ejercicios:
@@ -91,15 +106,20 @@ if bibliografia:
             print(f"- {autor} *[{titulo}]({url})* ({año})")
         else:
             print(f"- {autor} *{titulo}* ({año})")
+
+# Contacto
+email = info.get('email', '')
+if email:
+    print(f"""
+## 📧 Contacto
+
+Para dudas sobre el seminario: [{email}](mailto:{email})
+""")
 ```
-
-## 📍 Lugar
-
-Las sesiones se realizan en el **Aula T2** de la Facultat de Matemàtiques i Informàtica de la UB, salvo que se indique lo contrario.
 
 ---
 
 ::: {.callout-tip}
 ## ¿Tienes dudas?
-Contacta con el ponente o con los organizadores del seminario.
+Contacta con los organizadores del seminario.
 :::

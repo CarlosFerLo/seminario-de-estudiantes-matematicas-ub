@@ -3,54 +3,73 @@
 # Este es el único archivo que necesitas editar para actualizar el seminario
 
 info:
-  titulo: "Teoría de Categorías"
+  titulo: "Curvas Elípticas"
   subtitulo: "Seminario de Otoño 2025"
   descripcion: |
-    Este seminario ofrece una introducción a la teoría de categorías, 
-    cubriendo los conceptos fundamentales y sus aplicaciones en diversas 
-    áreas de las matemáticas.
-  ponente: "Estudiante 1"
-  email: "estudiante1@ub.edu"  # opcional
+    Este seminario ofrece una introducción a la teoría de curvas elípticas, 
+    cubriendo los conceptos fundamentales y sus aplicaciones en teoría de números
+    y criptografía.
+  organizadores:
+    - "Organizador 1"
+    - "Organizador 2"
+  email: "seminario@ub.edu"  # opcional
   estado: "en-curso"  # opciones: planificado, en-curso, completado
+
+# Participantes del seminario
+# ---------------------------
+# Lista de todas las personas que asisten al seminario (ponentes + oyentes)
+participantes:
+  - "María García"
+  - "Pere Vila"
+  - "Anna López"
+  - "Joan Martínez"
+  - "Laura Fernández"
+  - "Marc Puig"
+  - "Clara Roca"
+  - "Pol Soler"
 
 # Calendario de sesiones
 # ----------------------
 # Añade o modifica sesiones aquí. El sistema genera las páginas automáticamente.
 sesiones:
   - numero: 1
-    titulo: "Categorías y Funtores"
+    titulo: "Introducción a las curvas elípticas"
+    ponente: "Participante 1"
     fecha: "2025-10-15"
     hora: "12:00"
     lugar: "Aula T2, Facultat de Matemàtiques"
     estado: "completada"  # planificada, completada, cancelada
-    descripcion: "Introducción a las categorías, morfismos y funtores."
+    descripcion: "Definición y primeros ejemplos de curvas elípticas."
     notas_pdf: "sesion1_notas.pdf"      # opcional - enlace a PDF de la sesión
     notas_tex: "sesion1_notas.tex"      # opcional - fuente LaTeX
     
   - numero: 2
-    titulo: "Transformaciones Naturales"
+    titulo: "Ley de grupo"
+    ponente: "Participante 2"
     fecha: "2025-10-22"
     hora: "12:00"
     lugar: "Aula T2, Facultat de Matemàtiques"
     estado: "completada"
-    descripcion: "Transformaciones naturales y la categoría de funtores."
+    descripcion: "La estructura de grupo en una curva elíptica."
     notas_pdf: "sesion2_notas.pdf"
     
   - numero: 3
-    titulo: "Límites y Colímites"
+    titulo: "Curvas elípticas sobre cuerpos finitos"
+    ponente: "Participante 3"
     fecha: "2025-10-29"
     hora: "12:00"
     lugar: "Aula T2, Facultat de Matemàtiques"
     estado: "planificada"
-    descripcion: "Productos, coproductos, ecualizadores y el lema de Yoneda."
+    descripcion: "Teorema de Hasse y aplicaciones."
     
   - numero: 4
-    titulo: "Adjunciones"
+    titulo: "Aplicaciones a criptografía"
+    ponente: "Participante 4"
     fecha: "2025-11-05"
     hora: "12:00"
     lugar: "Aula T2, Facultat de Matemàtiques"
     estado: "planificada"
-    descripcion: "Funtores adjuntos y sus aplicaciones."
+    descripcion: "ECDH y ECDSA."
 
 # Materiales generales del seminario
 # ----------------------------------
@@ -66,16 +85,11 @@ materiales:
 # Bibliografía recomendada
 # ------------------------
 bibliografia:
-  - autor: "Mac Lane, S."
-    titulo: "Categories for the Working Mathematician"
-    año: 1978
+  - autor: "Silverman, J.H."
+    titulo: "The Arithmetic of Elliptic Curves"
+    año: 2009
     
-  - autor: "Riehl, E."
-    titulo: "Category Theory in Context"
-    año: 2016
-    url: "https://math.jhu.edu/~eriehl/context.pdf"
-    
-  - autor: "Leinster, T."
-    titulo: "Basic Category Theory"
-    año: 2014
+  - autor: "Washington, L.C."
+    titulo: "Elliptic Curves: Number Theory and Cryptography"
+    año: 2008
     url: "https://arxiv.org/abs/1612.09375"

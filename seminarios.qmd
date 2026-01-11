@@ -38,7 +38,6 @@ for carpeta in seminarios_dir.iterdir():
                         'info': {
                             'titulo': tema,
                             'subtitulo': f'{semestre.title()} {año}',
-                            'ponente': '-',
                             'descripcion': 'Seminario archivado.',
                             'estado': 'completado'
                         },
@@ -97,37 +96,37 @@ for curso in cursos_ordenados:
         info = sem.get('info', {})
         titulo = info.get('titulo', 'Sin título')
         subtitulo = info.get('subtitulo', '')
-        ponente = info.get('ponente', '-')
         descripcion = info.get('descripcion', '')
         estado = info.get('estado', 'planificado')
         badge = estado_badge.get(estado, estado)
         
-        print(f"### {titulo}")
-        print(f"*{subtitulo}*")
+        # Título como enlace clickeable
+        if sem['_tipo'] == 'completo':
+            titulo_link = f"[{titulo}](seminarios/{sem['_carpeta']}/)"
+        else:
+            titulo_link = f"[{titulo}](seminarios/{sem['_carpeta']}/{sem['_pdf']})"
+        
+        print(f"### 📘 {titulo_link}")
+        print(f"*{subtitulo}* · {badge}")
         print("")
-        print(f"- **Ponente**: {ponente}")
-        print(f"- **Estado**: {badge}")
         
         if descripcion:
-            print(f"- **Descripción**: {descripcion.strip()}")
+            print(f"{descripcion.strip()}")
+            print("")
         
         if sem['_tipo'] == 'completo':
-            print(f"- **Materiales**: [Acceder al seminario](seminarios/{sem['_carpeta']}/)")
-            
             # Mostrar calendario de sesiones si existe
             sesiones = sem.get('sesiones', [])
             if sesiones:
-                print("")
                 print("**Sesiones:**")
                 print("")
-                print("| # | Fecha | Título | Estado |")
-                print("|---|-------|--------|--------|")
+                print("| # | Fecha | Título | Ponente | Estado |")
+                print("|---|-------|--------|---------|--------|")
                 for s in sesiones:
                     s_estado = {'completada': '✅', 'planificada': '📅', 'cancelada': '❌'}.get(s.get('estado', ''), '📅')
                     fecha = s.get('fecha', 'TBD')
-                    print(f"| {s.get('numero', '-')} | {fecha} | {s.get('titulo', '')} | {s_estado} |")
-        else:
-            print(f"- **Materiales**: [Descargar PDF](seminarios/{sem['_carpeta']}/{sem['_pdf']})")
+                    ponente = s.get('ponente', '-')
+                    print(f"| {s.get('numero', '-')} | {fecha} | {s.get('titulo', '')} | {ponente} | {s_estado} |")
         
         print("")
         print("---")

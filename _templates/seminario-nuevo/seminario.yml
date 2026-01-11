@@ -9,15 +9,28 @@ info:
   descripcion: |
     Descripción del seminario. Puedes escribir 
     varias líneas usando este formato.
-  ponente: "Nombre del Ponente"
-  email: ""  # opcional
+  # Organizador(es) del seminario (pueden ser uno o varios)
+  organizadores:
+    - "Nombre Organizador 1"
+    - "Nombre Organizador 2"  # opcional, añade más si es necesario
+  email: ""  # opcional - email de contacto
   estado: "planificado"  # opciones: planificado, en-curso, completado
+
+# Participantes del seminario
+# ---------------------------
+# Lista de todos los asistentes (ponentes + oyentes)
+participantes:
+  - "Nombre Participante 1"
+  - "Nombre Participante 2"
+  - "Nombre Participante 3"
+  # Añade más participantes según vayan asistiendo
 
 # Calendario de sesiones
 # ----------------------
 sesiones:
   - numero: 1
     titulo: "Título de la primera sesión"
+    ponente: "Nombre del ponente de esta sesión"  # quien da la charla
     fecha: "YYYY-MM-DD"
     hora: "12:00"
     lugar: "Aula T2, Facultat de Matemàtiques"
@@ -28,6 +41,7 @@ sesiones:
     
   - numero: 2
     titulo: "Título de la segunda sesión"
+    ponente: "Nombre del ponente de esta sesión"
     fecha: "YYYY-MM-DD"
     hora: "12:00"
     lugar: "Aula T2, Facultat de Matemàtiques"

@@ -16,6 +16,7 @@ info = data['info']
 sesiones = data.get('sesiones', [])
 materiales = data.get('materiales', {})
 bibliografia = data.get('bibliografia', [])
+participantes = data.get('participantes', [])
 
 # Estado badge
 estado_badge = {
@@ -24,13 +25,19 @@ estado_badge = {
     'completado': '✅ Completado'
 }
 
+# Formatear organizadores
+organizadores = info.get('organizadores', [])
+if isinstance(organizadores, str):
+    organizadores = [organizadores]
+organizadores_str = ', '.join(organizadores) if organizadores else 'Por determinar'
+
 print(f"""# {info.get('titulo', 'Seminario')}
 
 *{info.get('subtitulo', '')}*
 
 ::: {{.callout-note}}
 ## {estado_badge.get(info.get('estado', 'planificado'), info.get('estado'))}
-**Ponente**: {info.get('ponente', 'Por determinar')}
+**Organizadores**: {organizadores_str}
 :::
 
 ## Descripción
@@ -39,8 +46,8 @@ print(f"""# {info.get('titulo', 'Seminario')}
 
 ## 📅 Calendario de Sesiones
 
-| # | Fecha | Título | Estado | Materiales |
-|---|-------|--------|--------|------------|""")
+| # | Fecha | Título | Ponente | Estado | Materiales |
+|---|-------|--------|---------|--------|------------|""")
 
 for s in sesiones:
     estado_icon = {'completada': '✅', 'planificada': '📅', 'cancelada': '❌'}.get(s.get('estado'), '📅')
@@ -57,7 +64,21 @@ for s in sesiones:
     if hora_str:
         fecha_str = f"{fecha_str} {hora_str}"
     
-    print(f"| {s.get('numero', '-')} | {fecha_str} | **{s.get('titulo', 'Sin título')}** | {estado_icon} {s.get('estado', 'planificada')} | {materiales_str} |")
+    ponente = s.get('ponente', '-')
+    
+    print(f"| {s.get('numero', '-')} | {fecha_str} | **{s.get('titulo', 'Sin título')}** | {ponente} | {estado_icon} | {materiales_str} |")
+
+# Participantes
+if participantes:
+    print(f"""
+## 👥 Participantes
+
+Este seminario cuenta con **{len(participantes)} participantes**:
+
+""")
+    # Mostrar en formato de lista compacta (varias columnas)
+    participantes_str = " · ".join(participantes)
+    print(participantes_str)
 
 # Materiales generales
 notas_gen = materiales.get('notas_generales', {}) or {}
@@ -89,11 +110,20 @@ if bibliografia:
             print(f"- {autor} *[{titulo}]({url})* ({año})")
         else:
             print(f"- {autor} *{titulo}* ({año})")
+
+# Contacto
+email = info.get('email', '')
+if email:
+    print(f"""
+## 📧 Contacto
+
+Para dudas sobre el seminario: [{email}](mailto:{email})
+""")
 ```
 
 ---
 
 ::: {.callout-tip}
 ## ¿Tienes dudas?
-Contacta con el ponente o con los organizadores del seminario.
+Contacta con los organizadores del seminario.
 :::
