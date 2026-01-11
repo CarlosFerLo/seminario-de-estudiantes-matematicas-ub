@@ -1,0 +1,51 @@
+---
+title: "Sesión 1: Categorías y Funtores"
+author: "Estudiante 1"
+date: "2025-10-15"
+---
+
+## Definición de Categoría
+
+Una **categoría** $\mathcal{C}$ consiste en:
+
+1. Una colección de **objetos** $\text{Ob}(\mathcal{C})$
+2. Para cada par de objetos $A, B$, un conjunto de **morfismos** $\text{Hom}(A, B)$
+3. Una **composición** $\circ : \text{Hom}(B, C) \times \text{Hom}(A, B) \to \text{Hom}(A, C)$
+4. Para cada objeto $A$, un **morfismo identidad** $\text{id}_A \in \text{Hom}(A, A)$
+
+### Axiomas
+
+La composición debe satisfacer:
+
+- **Asociatividad**: $(h \circ g) \circ f = h \circ (g \circ f)$
+- **Identidad**: $f \circ \text{id}_A = f$ y $\text{id}_B \circ f = f$
+
+## Ejemplos
+
+::: {.callout-tip}
+## Ejemplo: Set
+La categoría **Set** tiene como objetos todos los conjuntos y como morfismos las funciones entre conjuntos.
+:::
+
+::: {.callout-tip}
+## Ejemplo: Grp
+La categoría **Grp** tiene como objetos todos los grupos y como morfismos los homomorfismos de grupos.
+:::
+
+## Funtores
+
+Un **funtor** $F: \mathcal{C} \to \mathcal{D}$ es una aplicación que:
+
+1. Asigna a cada objeto $A \in \mathcal{C}$ un objeto $F(A) \in \mathcal{D}$
+2. Asigna a cada morfismo $f: A \to B$ un morfismo $F(f): F(A) \to F(B)$
+
+preservando identidades y composición.
+
+## Ejercicios
+
+1. Demuestra que la composición de funtores es un funtor.
+2. Encuentra un funtor de **Grp** a **Set**.
+
+---
+
+[← Volver al índice](index.qmd) | [Siguiente: Sesión 2 →](sesion2.qmd)

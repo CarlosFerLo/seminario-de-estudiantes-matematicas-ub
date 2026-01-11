@@ -1,0 +1,31 @@
+---
+title: "Título del Seminario"
+subtitle: "Seminario de [Semestre] [Año]"
+author: "Nombre del Ponente"
+date: "YYYY-MM-DD"
+---
+
+## Descripción
+
+[Descripción breve del seminario]
+
+## Contenidos
+
+1. [Sesión 1: Título](sesion1.qmd)
+2. [Sesión 2: Título](sesion2.qmd)
+
+## Materiales adicionales
+
+- [Notas completas (PDF)](notas.pdf)
+- [Ejercicios propuestos](ejercicios.pdf)
+
+## Bibliografía
+
+- [Referencia 1]
+- [Referencia 2]
+
+## Recursos LaTeX (opcional)
+
+Si tienes archivos LaTeX, puedes enlazarlos aquí:
+
+- [Código fuente de las notas](notas.tex)

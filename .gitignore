@@ -1,0 +1,32 @@
+# Quarto build output
+_site/
+_freeze/
+
+# LaTeX auxiliary files
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+.notebook/
+
+# Temporary files
+*.tmp
+*.temp
+
+/.quarto/

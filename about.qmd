@@ -1,0 +1,31 @@
+---
+title: "Sobre nosotros"
+---
+
+## El Seminario
+
+El Seminario de Estudiantes de Matemáticas de la UB nació con el objetivo de crear un espacio de aprendizaje horizontal donde los propios estudiantes son los protagonistas.
+
+## Organización
+
+El seminario está organizado por estudiantes voluntarios de los grados y másteres de matemáticas de la Universitat de Barcelona.
+
+### Equipo actual (2025-2026)
+
+- **Coordinador/a**: [Nombre]
+- **Organizadores**: [Nombres]
+
+## Contacto
+
+- **Email**: seminario.matematicas@ub.edu
+- **Ubicación**: Facultat de Matemàtiques i Informàtica, UB
+
+## Cómo contribuir
+
+Este sitio web está gestionado a través de GitHub. Si quieres contribuir con materiales o correcciones:
+
+1. Haz un fork del repositorio
+2. Añade tus cambios
+3. Crea un Pull Request
+
+Consulta el archivo `CONTRIBUTING.md` en el repositorio para más detalles.

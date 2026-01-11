@@ -1,0 +1,38 @@
+---
+title: "Seminario de Estudiantes de Matemáticas"
+subtitle: "Universitat de Barcelona"
+---
+
+## Bienvenidos
+
+El **Seminario de Estudiantes de Matemáticas** es una iniciativa organizada por estudiantes de la Facultad de Matemáticas de la Universitat de Barcelona. Nuestro objetivo es crear un espacio donde los estudiantes puedan presentar y discutir temas matemáticos de interés, fomentando el aprendizaje colaborativo y la divulgación.
+
+## Seminarios Recientes
+
+::: {.callout-note}
+## Próxima sesión
+Consulta la página de [Seminarios](seminarios.qmd) para ver el calendario completo.
+:::
+
+### Curso 2025-2026
+
+| Semestre | Tema | Ponente | Materiales |
+|----------|------|---------|------------|
+| Primavera 2026 | *Próximamente* | - | - |
+| Otoño 2025 | Teoría de Categorías | Estudiante 1 | [Ver materiales](seminarios/2025-otono-categorias/index.qmd) |
+
+### Curso 2024-2025
+
+| Semestre | Tema | Ponente | Materiales |
+|----------|------|---------|------------|
+| Primavera 2025 | Análisis Funcional | Estudiante 2 | [PDF](seminarios/2025-primavera-funcional/notas.pdf) |
+| Otoño 2024 | Topología Algebraica | Estudiante 3 | [PDF](seminarios/2024-otono-topologia/notas.pdf) |
+
+## ¿Quieres participar?
+
+Si estás interesado en dar una charla o proponer un tema, contacta con nosotros a través del correo del seminario o acércate a cualquiera de los organizadores.
+
+## Enlaces útiles
+
+- [Facultat de Matemàtiques i Informàtica - UB](https://mat.ub.edu/)
+- [Repositorio GitHub del seminario](https://github.com/tu-usuario/seminario-de-estudiantes-matematicas-ub)

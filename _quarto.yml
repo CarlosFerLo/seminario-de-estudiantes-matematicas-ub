@@ -1,0 +1,36 @@
+project:
+  type: website
+  output-dir: _site
+  resources:
+    - "seminarios/**/*.pdf"
+
+website:
+  title: "Seminario de Estudiantes de Matemáticas UB"
+  description: "Seminario organizado por estudiantes de la Facultad de Matemáticas de la Universidad de Barcelona"
+  navbar:
+    background: primary
+    left:
+      - href: index.qmd
+        text: Inicio
+      - href: seminarios.qmd
+        text: Seminarios
+      - href: about.qmd
+        text: Sobre nosotros
+  page-footer:
+    center: "Seminario de Estudiantes de Matemáticas - Universitat de Barcelona"
+
+format:
+  html:
+    theme: 
+      light: flatly
+      dark: darkly
+    css: styles.css
+    toc: true
+    toc-depth: 3
+    lang: es
+
+execute:
+  freeze: auto
+
+
+

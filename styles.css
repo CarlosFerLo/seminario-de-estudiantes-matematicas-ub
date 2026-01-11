@@ -1,0 +1,80 @@
+/* Custom styles for Seminario de Estudiantes de Matemáticas UB */
+
+/* Typography improvements */
+body {
+  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+}
+
+/* Math formulas */
+.math {
+  font-size: 1.1em;
+}
+
+/* Callout styling */
+.callout {
+  margin: 1.5em 0;
+}
+
+/* Table styling */
+table {
+  margin: 1.5em 0;
+}
+
+table th {
+  background-color: var(--bs-primary);
+  color: white;
+}
+
+/* Navigation improvements */
+.navbar-brand {
+  font-weight: 600;
+}
+
+/* Footer styling */
+.page-footer {
+  margin-top: 2em;
+  padding: 1em 0;
+  border-top: 1px solid #dee2e6;
+}
+
+/* Sidebar navigation for seminario pages */
+.sidebar nav {
+  font-size: 0.95em;
+}
+
+/* Code blocks */
+pre {
+  border-radius: 0.5em;
+  padding: 1em;
+}
+
+/* Links in content */
+.content a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.content a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* PDF links styling */
+a[href$=".pdf"]::after {
+  content: " 📄";
+  font-size: 0.9em;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .content {
+    padding: 1em;
+  }
+  
+  table {
+    font-size: 0.9em;
+  }
+}

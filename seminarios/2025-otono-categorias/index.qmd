@@ -1,0 +1,32 @@
+---
+title: "Teoría de Categorías"
+subtitle: "Seminario de Otoño 2025"
+author: "Estudiante 1"
+date: "2025-10-15"
+---
+
+## Descripción
+
+Este seminario ofrece una introducción a la teoría de categorías, cubriendo los conceptos fundamentales y sus aplicaciones en diversas áreas de las matemáticas.
+
+## Contenidos
+
+1. [Sesión 1: Categorías y Funtores](sesion1.qmd)
+2. [Sesión 2: Transformaciones Naturales](sesion2.qmd)
+3. [Sesión 3: Límites y Colímites](sesion3.qmd)
+
+## Materiales adicionales
+
+- [Notas completas (PDF)](notas.pdf)
+- [Ejercicios propuestos](ejercicios.pdf)
+
+## Bibliografía
+
+- Mac Lane, S. *Categories for the Working Mathematician*
+- Riehl, E. *Category Theory in Context*
+
+## Recursos LaTeX
+
+Los archivos fuente en LaTeX están disponibles en este directorio para quien quiera consultarlos o modificarlos.
+
+- [Código fuente de las notas](notas.tex)

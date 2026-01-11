@@ -1,0 +1,72 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{tikz-cd}
+\usepackage{hyperref}
+
+\title{Introducción a la Teoría de Categorías}
+\author{Estudiante 1 \\ Seminario de Estudiantes de Matemáticas UB}
+\date{Otoño 2025}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newtheorem{example}{Ejemplo}[section]
+\theoremstyle{plain}
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{lemma}[theorem]{Lema}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Categorías}
+
+\begin{definition}
+Una \textbf{categoría} $\mathcal{C}$ consiste en:
+\begin{enumerate}
+    \item Una colección de \textbf{objetos} $\text{Ob}(\mathcal{C})$
+    \item Para cada par de objetos $A, B$, un conjunto de \textbf{morfismos} $\text{Hom}(A, B)$
+    \item Una \textbf{composición} $\circ : \text{Hom}(B, C) \times \text{Hom}(A, B) \to \text{Hom}(A, C)$
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+La categoría $\mathbf{Set}$ tiene como objetos todos los conjuntos y como morfismos las funciones.
+\end{example}
+
+\section{Funtores}
+
+\begin{definition}
+Un \textbf{funtor} $F: \mathcal{C} \to \mathcal{D}$ asigna:
+\begin{itemize}
+    \item A cada objeto $A \in \mathcal{C}$ un objeto $F(A) \in \mathcal{D}$
+    \item A cada morfismo $f: A \to B$ un morfismo $F(f): F(A) \to F(B)$
+\end{itemize}
+preservando identidades y composición.
+\end{definition}
+
+\section{Transformaciones Naturales}
+
+\begin{definition}
+Una \textbf{transformación natural} $\eta: F \Rightarrow G$ entre funtores $F, G: \mathcal{C} \to \mathcal{D}$ es una familia de morfismos $\eta_A: F(A) \to G(A)$ tal que el siguiente diagrama conmuta:
+\[
+\begin{tikzcd}
+F(A) \arrow[r, "\eta_A"] \arrow[d, "F(f)"'] & G(A) \arrow[d, "G(f)"] \\
+F(B) \arrow[r, "\eta_B"'] & G(B)
+\end{tikzcd}
+\]
+\end{definition}
+
+\section{El Lema de Yoneda}
+
+\begin{theorem}[Lema de Yoneda]
+Para todo funtor $F: \mathcal{C} \to \mathbf{Set}$ y objeto $A \in \mathcal{C}$:
+\[
+\text{Nat}(\text{Hom}(A, -), F) \cong F(A)
+\]
+\end{theorem}
+
+\end{document}

@@ -1,0 +1,39 @@
+---
+title: "Archivo de Seminarios"
+---
+
+## Todos los Seminarios
+
+Esta página contiene el archivo completo de todos los seminarios realizados, organizados por curso académico.
+
+---
+
+## Curso 2025-2026
+
+### Otoño 2025: Teoría de Categorías
+
+- **Ponente**: Estudiante 1
+- **Descripción**: Introducción a la teoría de categorías y sus aplicaciones en matemáticas.
+- **Materiales**: [Acceder a los materiales](seminarios/2025-otono-categorias/index.qmd)
+
+---
+
+## Curso 2024-2025
+
+### Primavera 2025: Análisis Funcional
+
+- **Ponente**: Estudiante 2
+- **Descripción**: Espacios de Banach y operadores lineales.
+- **Materiales**: [Descargar PDF](seminarios/2025-primavera-funcional/notas.pdf)
+
+### Otoño 2024: Topología Algebraica
+
+- **Ponente**: Estudiante 3
+- **Descripción**: Grupos fundamentales y espacios de recubrimiento.
+- **Materiales**: [Descargar PDF](seminarios/2024-otono-topologia/notas.pdf)
+
+---
+
+## Cómo añadir un nuevo seminario
+
+Para añadir un nuevo seminario, consulta la [guía de contribución](CONTRIBUTING.md) o el archivo `_templates/` en el repositorio.

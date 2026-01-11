@@ -1,0 +1,43 @@
+---
+title: "Sesión N: Título"
+author: "Nombre del Ponente"
+date: "YYYY-MM-DD"
+---
+
+## Introducción
+
+[Contenido de la sesión]
+
+## Definiciones
+
+::: {.callout-note}
+## Definición
+[Tu definición aquí]
+:::
+
+## Teoremas principales
+
+::: {.callout-important}
+## Teorema
+[Enunciado del teorema]
+:::
+
+### Demostración
+
+[Demostración]
+
+## Ejemplos
+
+::: {.callout-tip}
+## Ejemplo
+[Ejemplo ilustrativo]
+:::
+
+## Ejercicios
+
+1. [Ejercicio 1]
+2. [Ejercicio 2]
+
+---
+
+[← Sesión anterior](sesion-anterior.qmd) | [Volver al índice](index.qmd) | [Siguiente sesión →](sesion-siguiente.qmd)
