@@ -1,0 +1,35 @@
+# ===========================================
+# CONFIGURACIÓN DEL SITIO
+# ===========================================
+# Este archivo contiene las variables de configuración
+# del sitio. Modifica estos valores según sea necesario.
+# 
+# USO: En archivos .qmd usa la sintaxis {{< var nombre.variable >}}
+# Ejemplo: {{< var contacto.email >}}
+# ===========================================
+
+# Información del seminario
+seminario:
+  nombre: "Seminario de Estudiantes de Matemáticas UB"
+  nombre_corto: "Seminario Matemáticas UB"
+  descripcion: "Seminario organizado por estudiantes de la Facultad de Matemáticas de la Universidad de Barcelona"
+  ubicacion: "Facultat de Matemàtiques i Informàtica, UB"
+
+# Información de contacto
+contacto:
+  email: "carlos.ferlo@outlook.com"
+
+# Enlaces y redes sociales
+enlaces:
+  github:
+    repo: "https://github.com/CarlosFerLo/seminario-de-estudiantes-matematicas-ub"
+    owner: "CarlosFerLo"
+  # Añade más enlaces aquí si es necesario
+  # twitter: "https://twitter.com/..."
+  # web_ub: "https://..."
+
+# Universidad
+universidad:
+  nombre: "Universitat de Barcelona"
+  nombre_corto: "UB"
+  facultad: "Facultat de Matemàtiques i Informàtica"

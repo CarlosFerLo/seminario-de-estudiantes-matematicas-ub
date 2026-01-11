@@ -5,9 +5,15 @@ project:
     - "seminarios/**/*.pdf"
     - "seminarios/**/*.tex"
 
+# Archivo de variables de configuración
+metadata-files:
+  - _variables.yml
+
 website:
-  title: "Seminario de Estudiantes de Matemáticas UB"
-  description: "Seminario organizado por estudiantes de la Facultad de Matemáticas de la Universidad de Barcelona"
+  title: "{{< var seminario.nombre >}}"
+  description: "{{< var seminario.descripcion >}}"
+  repo-url: "{{< var enlaces.github.repo >}}"
+  repo-actions: [issue, source]
   navbar:
     background: primary
     left:
@@ -18,7 +24,7 @@ website:
       - href: about.qmd
         text: Sobre nosotros
   page-footer:
-    center: "Seminario de Estudiantes de Matemáticas - Universitat de Barcelona"
+    center: "{{< var seminario.nombre_corto >}} - {{< var universidad.nombre >}}"
 
 format:
   html:

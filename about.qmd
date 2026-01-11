@@ -4,22 +4,23 @@ title: "Sobre nosotros"
 
 ## El Seminario
 
-El Seminario de Estudiantes de Matemáticas de la UB nació con el objetivo de poder estudiar temas de matemáticas que interesaran a los estudiantes pero que no se daban durante la carrera. El seminario siempre ha sido impulsado por los estudiantes, cada semestre elegimos un tema, preparamos el temario de diversas sesiones que se hacen de manera semanal por voluntarios.
+El {{< var seminario.nombre >}} nació con el objetivo de poder estudiar temas de matemáticas que interesaran a los estudiantes pero que no se daban durante la carrera. El seminario siempre ha sido impulsado por los estudiantes, cada semestre elegimos un tema, preparamos el temario de diversas sesiones que se hacen de manera semanal por voluntarios.
 
 ## Organización
-- **Organizadores actuales**: Abel Salinas y Carlos Fernández
-- **Fundador**: Roger Garrido
+- **Organizadores actuales**: {{< var organizadores.actuales.0.nombre >}} y {{< var organizadores.actuales.1.nombre >}}
+- **Fundador**: {{< var organizadores.fundador >}}
 
 ## Contacto
 
-- **Email**: carlos.ferlo@gmail.com
-- **Ubicación**: Facultat de Matemàtiques i Informàtica, UB
+- **Email**: [{{< var contacto.email >}}](mailto:{{< var contacto.email >}})
+- **GitHub**: [{{< var enlaces.github.repo >}}]({{< var enlaces.github.repo >}})
+- **Ubicación**: {{< var seminario.ubicacion >}}
 
 ## Cómo contribuir
 
 Este sitio web está gestionado a través de GitHub. Si quieres contribuir con materiales o correcciones:
 
-1. Haz un fork del repositorio
+1. Haz un fork del [repositorio]({{< var enlaces.github.repo >}})
 2. Añade tus cambios
 3. Crea un Pull Request
 
