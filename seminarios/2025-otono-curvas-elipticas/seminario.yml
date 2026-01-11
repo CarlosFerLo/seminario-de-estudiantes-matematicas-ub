@@ -34,8 +34,8 @@ participantes:
 sesiones:
   - numero: 1
     titulo: "Introducción a las curvas elípticas"
-    ponente: "Participante 1"
-    fecha: "2025-10-15"
+    ponente: "Abel Salinas"
+    fecha: "2025-10-16"
     hora: "12:00"
     lugar: "Aula T2, Facultat de Matemàtiques"
     estado: "completada"  # planificada, completada, cancelada
@@ -45,8 +45,8 @@ sesiones:
     
   - numero: 2
     titulo: "Ley de grupo"
-    ponente: "Participante 2"
-    fecha: "2025-10-22"
+    ponente: "Teresa Ferrer"
+    fecha: "2025-10-23"
     hora: "12:00"
     lugar: "Aula T2, Facultat de Matemàtiques"
     estado: "completada"
@@ -55,20 +55,20 @@ sesiones:
     
   - numero: 3
     titulo: "Curvas elípticas sobre cuerpos finitos"
-    ponente: "Participante 3"
-    fecha: "2025-10-29"
+    ponente: "Antonio Fernández"
+    fecha: "2025-11-13"
     hora: "12:00"
     lugar: "Aula T2, Facultat de Matemàtiques"
-    estado: "planificada"
+    estado: "completada"
     descripcion: "Teorema de Hasse y aplicaciones."
     
   - numero: 4
     titulo: "Aplicaciones a criptografía"
     ponente: "Participante 4"
-    fecha: "2025-11-05"
+    fecha: "2025-11-20"
     hora: "12:00"
     lugar: "Aula T2, Facultat de Matemàtiques"
-    estado: "planificada"
+    estado: "completada"
     descripcion: "ECDH y ECDSA."
 
 # Materiales generales del seminario
