@@ -1,31 +1,99 @@
 ---
-title: "Título del Seminario"
-subtitle: "Seminario de [Semestre] [Año]"
-author: "Nombre del Ponente"
-date: "YYYY-MM-DD"
+title: "Seminario"
 ---
+
+```{python}
+#| echo: false
+#| output: asis
+import yaml
+from pathlib import Path
+
+# Cargar datos del seminario
+with open('seminario.yml', 'r', encoding='utf-8') as f:
+    data = yaml.safe_load(f)
+
+info = data['info']
+sesiones = data.get('sesiones', [])
+materiales = data.get('materiales', {})
+bibliografia = data.get('bibliografia', [])
+
+# Estado badge
+estado_badge = {
+    'planificado': '🗓️ Planificado',
+    'en-curso': '🔄 En curso', 
+    'completado': '✅ Completado'
+}
+
+print(f"""# {info.get('titulo', 'Seminario')}
+
+*{info.get('subtitulo', '')}*
+
+::: {{.callout-note}}
+## {estado_badge.get(info.get('estado', 'planificado'), info.get('estado'))}
+**Ponente**: {info.get('ponente', 'Por determinar')}
+:::
 
 ## Descripción
 
-[Descripción breve del seminario]
+{info.get('descripcion', '')}
 
-## Contenidos
+## 📅 Calendario de Sesiones
 
-1. [Sesión 1: Título](sesion1.qmd)
-2. [Sesión 2: Título](sesion2.qmd)
+| # | Fecha | Título | Estado | Materiales |
+|---|-------|--------|--------|------------|""")
 
-## Materiales adicionales
+for s in sesiones:
+    estado_icon = {'completada': '✅', 'planificada': '📅', 'cancelada': '❌'}.get(s.get('estado'), '📅')
+    
+    materiales_links = []
+    if s.get('notas_pdf'):
+        materiales_links.append(f"[PDF]({s['notas_pdf']})")
+    if s.get('notas_tex'):
+        materiales_links.append(f"[TeX]({s['notas_tex']})")
+    materiales_str = " · ".join(materiales_links) if materiales_links else "-"
+    
+    fecha_str = s.get('fecha', 'TBD')
+    hora_str = s.get('hora', '')
+    if hora_str:
+        fecha_str = f"{fecha_str} {hora_str}"
+    
+    print(f"| {s.get('numero', '-')} | {fecha_str} | **{s.get('titulo', 'Sin título')}** | {estado_icon} {s.get('estado', 'planificada')} | {materiales_str} |")
 
-- [Notas completas (PDF)](notas.pdf)
-- [Ejercicios propuestos](ejercicios.pdf)
+# Materiales generales
+notas_gen = materiales.get('notas_generales', {}) or {}
+ejercicios = materiales.get('ejercicios')
 
-## Bibliografía
+if notas_gen.get('pdf') or notas_gen.get('tex') or ejercicios:
+    print("""
+## 📚 Materiales Generales
+""")
+    if notas_gen.get('pdf'):
+        print(f"- [Notas completas (PDF)]({notas_gen['pdf']})")
+    if notas_gen.get('tex'):
+        print(f"- [Notas completas (LaTeX)]({notas_gen['tex']})")
+    if ejercicios:
+        print(f"- [Ejercicios propuestos]({ejercicios})")
 
-- [Referencia 1]
-- [Referencia 2]
+# Bibliografía
+if bibliografia:
+    print("""
+## 📖 Bibliografía
+""")
+    for ref in bibliografia:
+        autor = ref.get('autor', '')
+        titulo = ref.get('titulo', '')
+        año = ref.get('año', '')
+        url = ref.get('url')
+        
+        if url:
+            print(f"- {autor} *[{titulo}]({url})* ({año})")
+        else:
+            print(f"- {autor} *{titulo}* ({año})")
+```
 
-## Recursos LaTeX (opcional)
+---
 
-Si tienes archivos LaTeX, puedes enlazarlos aquí:
-
-- [Código fuente de las notas](notas.tex)
+::: {.callout-tip}
+## ¿Tienes dudas?
+Contacta con el ponente o con los organizadores del seminario.
+:::

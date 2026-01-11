@@ -1,0 +1,81 @@
+# Configuración del seminario - EDITA ESTE ARCHIVO
+# ================================================
+# Este es el único archivo que necesitas editar para actualizar el seminario
+
+info:
+  titulo: "Teoría de Categorías"
+  subtitulo: "Seminario de Otoño 2025"
+  descripcion: |
+    Este seminario ofrece una introducción a la teoría de categorías, 
+    cubriendo los conceptos fundamentales y sus aplicaciones en diversas 
+    áreas de las matemáticas.
+  ponente: "Estudiante 1"
+  email: "estudiante1@ub.edu"  # opcional
+  estado: "en-curso"  # opciones: planificado, en-curso, completado
+
+# Calendario de sesiones
+# ----------------------
+# Añade o modifica sesiones aquí. El sistema genera las páginas automáticamente.
+sesiones:
+  - numero: 1
+    titulo: "Categorías y Funtores"
+    fecha: "2025-10-15"
+    hora: "12:00"
+    lugar: "Aula T2, Facultat de Matemàtiques"
+    estado: "completada"  # planificada, completada, cancelada
+    descripcion: "Introducción a las categorías, morfismos y funtores."
+    notas_pdf: "sesion1_notas.pdf"      # opcional - enlace a PDF de la sesión
+    notas_tex: "sesion1_notas.tex"      # opcional - fuente LaTeX
+    
+  - numero: 2
+    titulo: "Transformaciones Naturales"
+    fecha: "2025-10-22"
+    hora: "12:00"
+    lugar: "Aula T2, Facultat de Matemàtiques"
+    estado: "completada"
+    descripcion: "Transformaciones naturales y la categoría de funtores."
+    notas_pdf: "sesion2_notas.pdf"
+    
+  - numero: 3
+    titulo: "Límites y Colímites"
+    fecha: "2025-10-29"
+    hora: "12:00"
+    lugar: "Aula T2, Facultat de Matemàtiques"
+    estado: "planificada"
+    descripcion: "Productos, coproductos, ecualizadores y el lema de Yoneda."
+    
+  - numero: 4
+    titulo: "Adjunciones"
+    fecha: "2025-11-05"
+    hora: "12:00"
+    lugar: "Aula T2, Facultat de Matemàtiques"
+    estado: "planificada"
+    descripcion: "Funtores adjuntos y sus aplicaciones."
+
+# Materiales generales del seminario
+# ----------------------------------
+materiales:
+  # Notas completas (se añaden cuando el seminario termina)
+  notas_generales:
+    pdf: "notas_completas.pdf"    # opcional
+    tex: "notas_completas.tex"    # opcional
+  
+  # Otros materiales
+  ejercicios: "ejercicios.pdf"    # opcional
+  
+# Bibliografía recomendada
+# ------------------------
+bibliografia:
+  - autor: "Mac Lane, S."
+    titulo: "Categories for the Working Mathematician"
+    año: 1978
+    
+  - autor: "Riehl, E."
+    titulo: "Category Theory in Context"
+    año: 2016
+    url: "https://math.jhu.edu/~eriehl/context.pdf"
+    
+  - autor: "Leinster, T."
+    titulo: "Basic Category Theory"
+    año: 2014
+    url: "https://arxiv.org/abs/1612.09375"

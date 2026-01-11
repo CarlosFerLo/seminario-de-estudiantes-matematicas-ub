@@ -1,6 +1,6 @@
 # Seminario de Estudiantes de Matemáticas UB
 
-[![Build and Deploy](https://github.com/tu-usuario/seminario-de-estudiantes-matematicas-ub/actions/workflows/publish.yml/badge.svg)](https://github.com/tu-usuario/seminario-de-estudiantes-matematicas-ub/actions/workflows/publish.yml)
+[![Build and Deploy](https://github.com/carlosferlo/seminario-de-estudiantes-matematicas-ub/actions/workflows/publish.yml/badge.svg)](https://github.com/tu-usuario/seminario-de-estudiantes-matematicas-ub/actions/workflows/publish.yml)
 
 Sitio web del Seminario de Estudiantes de Matemáticas de la Universitat de Barcelona.
 
@@ -63,5 +63,5 @@ El contenido de este repositorio está bajo licencia [CC BY-SA 4.0](https://crea
 
 ## 👥 Contacto
 
-- Email: seminario.matematicas@ub.edu
+- Email: carlos.ferlo@outlook.com
 - Facultat de Matemàtiques i Informàtica, UB

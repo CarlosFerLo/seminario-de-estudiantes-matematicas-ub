@@ -1,0 +1,51 @@
+# Configuración del seminario - EDITA ESTE ARCHIVO
+# ================================================
+# Este es el único archivo que necesitas editar para actualizar el seminario.
+# Copia esta plantilla a: seminarios/YYYY-semestre-tema/seminario.yml
+
+info:
+  titulo: "Título del Seminario"
+  subtitulo: "Seminario de [Semestre] [Año]"
+  descripcion: |
+    Descripción del seminario. Puedes escribir 
+    varias líneas usando este formato.
+  ponente: "Nombre del Ponente"
+  email: ""  # opcional
+  estado: "planificado"  # opciones: planificado, en-curso, completado
+
+# Calendario de sesiones
+# ----------------------
+sesiones:
+  - numero: 1
+    titulo: "Título de la primera sesión"
+    fecha: "YYYY-MM-DD"
+    hora: "12:00"
+    lugar: "Aula T2, Facultat de Matemàtiques"
+    estado: "planificada"  # planificada, completada, cancelada
+    descripcion: "Breve descripción del contenido."
+    # notas_pdf: "sesion1_notas.pdf"   # descomenta cuando añadas el PDF
+    # notas_tex: "sesion1_notas.tex"   # descomenta si tienes el fuente LaTeX
+    
+  - numero: 2
+    titulo: "Título de la segunda sesión"
+    fecha: "YYYY-MM-DD"
+    hora: "12:00"
+    lugar: "Aula T2, Facultat de Matemàtiques"
+    estado: "planificada"
+    descripcion: "Breve descripción del contenido."
+
+# Materiales generales (añadir cuando el seminario termine)
+# ---------------------------------------------------------
+materiales:
+  notas_generales:
+    # pdf: "notas_completas.pdf"   # descomenta cuando tengas el PDF
+    # tex: "notas_completas.tex"   # descomenta si tienes el fuente LaTeX
+  # ejercicios: "ejercicios.pdf"   # descomenta si hay ejercicios
+
+# Bibliografía recomendada
+# ------------------------
+bibliografia:
+  - autor: "Autor, A."
+    titulo: "Título del libro"
+    año: 2020
+    # url: "https://..."  # opcional - enlace al recurso

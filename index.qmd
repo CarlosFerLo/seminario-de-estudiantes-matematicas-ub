@@ -7,26 +7,185 @@ subtitle: "Universitat de Barcelona"
 
 El **Seminario de Estudiantes de Matemáticas** es una iniciativa organizada por estudiantes de la Facultad de Matemáticas de la Universitat de Barcelona. Nuestro objetivo es crear un espacio donde los estudiantes puedan presentar y discutir temas matemáticos de interés, fomentando el aprendizaje colaborativo y la divulgación.
 
-## Seminarios Recientes
+## Próximas Sesiones
 
-::: {.callout-note}
-## Próxima sesión
-Consulta la página de [Seminarios](seminarios.qmd) para ver el calendario completo.
-:::
+```{python}
+#| echo: false
+#| output: asis
+import yaml
+from pathlib import Path
+from datetime import datetime
 
-### Curso 2025-2026
+# Buscar todos los seminarios
+seminarios_dir = Path('seminarios')
+seminarios = []
 
-| Semestre | Tema | Ponente | Materiales |
-|----------|------|---------|------------|
-| Primavera 2026 | *Próximamente* | - | - |
-| Otoño 2025 | Teoría de Categorías | Estudiante 1 | [Ver materiales](seminarios/2025-otono-categorias/index.qmd) |
+for carpeta in seminarios_dir.iterdir():
+    if carpeta.is_dir():
+        yaml_file = carpeta / 'seminario.yml'
+        if yaml_file.exists():
+            with open(yaml_file, 'r', encoding='utf-8') as f:
+                data = yaml.safe_load(f)
+                data['_carpeta'] = carpeta.name
+                data['_tipo'] = 'completo'
+                seminarios.append(data)
+        else:
+            # Seminario antiguo solo con PDF
+            pdfs = list(carpeta.glob('*.pdf'))
+            if pdfs:
+                # Extraer info del nombre de carpeta (YYYY-semestre-tema)
+                partes = carpeta.name.split('-')
+                if len(partes) >= 3:
+                    año = partes[0]
+                    semestre = partes[1]
+                    tema = ' '.join(partes[2:]).title()
+                    seminarios.append({
+                        'info': {
+                            'titulo': tema,
+                            'subtitulo': f'{semestre.title()} {año}',
+                            'estado': 'completado'
+                        },
+                        '_carpeta': carpeta.name,
+                        '_tipo': 'pdf',
+                        '_pdf': pdfs[0].name
+                    })
 
-### Curso 2024-2025
+# Buscar próximas sesiones (planificadas)
+proximas = []
+for sem in seminarios:
+    if sem.get('_tipo') == 'completo':
+        for sesion in sem.get('sesiones', []):
+            if sesion.get('estado') == 'planificada':
+                proximas.append({
+                    'seminario': sem['info'].get('titulo', ''),
+                    'sesion': sesion,
+                    'carpeta': sem['_carpeta']
+                })
 
-| Semestre | Tema | Ponente | Materiales |
-|----------|------|---------|------------|
-| Primavera 2025 | Análisis Funcional | Estudiante 2 | [PDF](seminarios/2025-primavera-funcional/notas.pdf) |
-| Otoño 2024 | Topología Algebraica | Estudiante 3 | [PDF](seminarios/2024-otono-topologia/notas.pdf) |
+# Ordenar por fecha
+try:
+    proximas.sort(key=lambda x: x['sesion'].get('fecha', '9999'))
+except:
+    pass
+
+if proximas:
+    print("::: {.callout-tip}")
+    print("## 📅 Próximas sesiones")
+    print("")
+    for p in proximas[:3]:  # Mostrar máximo 3
+        fecha = p['sesion'].get('fecha', 'TBD')
+        hora = p['sesion'].get('hora', '')
+        lugar = p['sesion'].get('lugar', '')
+        print(f"**{p['seminario']}** - Sesión {p['sesion'].get('numero', '')}: {p['sesion'].get('titulo', '')}")
+        print(f"")
+        print(f"- 📆 {fecha} {hora}")
+        if lugar:
+            print(f"- 📍 {lugar}")
+        print("")
+    print(":::")
+else:
+    print("::: {.callout-note}")
+    print("## Próximas sesiones")
+    print("No hay sesiones programadas. Consulta la página de [Seminarios](seminarios.qmd) para ver el archivo completo.")
+    print(":::")
+```
+
+## Seminarios por Curso Académico
+
+```{python}
+#| echo: false
+#| output: asis
+import yaml
+from pathlib import Path
+
+# Buscar todos los seminarios
+seminarios_dir = Path('seminarios')
+seminarios = []
+
+for carpeta in seminarios_dir.iterdir():
+    if carpeta.is_dir():
+        yaml_file = carpeta / 'seminario.yml'
+        if yaml_file.exists():
+            with open(yaml_file, 'r', encoding='utf-8') as f:
+                data = yaml.safe_load(f)
+                data['_carpeta'] = carpeta.name
+                data['_tipo'] = 'completo'
+                seminarios.append(data)
+        else:
+            # Seminario antiguo solo con PDF
+            pdfs = list(carpeta.glob('*.pdf'))
+            if pdfs:
+                partes = carpeta.name.split('-')
+                if len(partes) >= 3:
+                    año = partes[0]
+                    semestre = partes[1]
+                    tema = ' '.join(partes[2:]).replace('-', ' ').title()
+                    seminarios.append({
+                        'info': {
+                            'titulo': tema,
+                            'subtitulo': f'{semestre.title()} {año}',
+                            'ponente': '-',
+                            'estado': 'completado'
+                        },
+                        '_carpeta': carpeta.name,
+                        '_tipo': 'pdf',
+                        '_pdf': pdfs[0].name
+                    })
+
+# Extraer año de la carpeta y agrupar por curso académico
+def get_curso(carpeta):
+    partes = carpeta.split('-')
+    if len(partes) >= 2:
+        año = int(partes[0])
+        semestre = partes[1].lower()
+        # Otoño pertenece al curso que empieza ese año
+        # Primavera pertenece al curso que empezó el año anterior
+        if semestre == 'primavera':
+            return f"{año-1}-{año}"
+        else:
+            return f"{año}-{año+1}"
+    return "Otros"
+
+# Agrupar por curso
+cursos = {}
+for sem in seminarios:
+    curso = get_curso(sem['_carpeta'])
+    if curso not in cursos:
+        cursos[curso] = []
+    cursos[curso].append(sem)
+
+# Ordenar cursos (más reciente primero)
+cursos_ordenados = sorted(cursos.keys(), reverse=True)
+
+# Estado badges
+estado_icon = {
+    'planificado': '🗓️',
+    'en-curso': '🔄',
+    'completado': '✅'
+}
+
+for curso in cursos_ordenados:
+    print(f"### Curso {curso}")
+    print("")
+    print("| Tema | Ponente | Estado | Materiales |")
+    print("|------|---------|--------|------------|")
+    
+    for sem in cursos[curso]:
+        info = sem.get('info', {})
+        titulo = info.get('titulo', 'Sin título')
+        ponente = info.get('ponente', '-')
+        estado = info.get('estado', 'planificado')
+        icon = estado_icon.get(estado, '📅')
+        
+        if sem['_tipo'] == 'completo':
+            link = f"[Ver seminario](seminarios/{sem['_carpeta']}/)"
+        else:
+            link = f"[PDF](seminarios/{sem['_carpeta']}/{sem['_pdf']})"
+        
+        print(f"| **{titulo}** | {ponente} | {icon} {estado} | {link} |")
+    
+    print("")
+```
 
 ## ¿Quieres participar?
 

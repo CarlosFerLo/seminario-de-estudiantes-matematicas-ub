@@ -6,34 +6,141 @@ title: "Archivo de Seminarios"
 
 Esta página contiene el archivo completo de todos los seminarios realizados, organizados por curso académico.
 
----
+```{python}
+#| echo: false
+#| output: asis
+import yaml
+from pathlib import Path
 
-## Curso 2025-2026
+# Buscar todos los seminarios
+seminarios_dir = Path('seminarios')
+seminarios = []
 
-### Otoño 2025: Teoría de Categorías
+for carpeta in seminarios_dir.iterdir():
+    if carpeta.is_dir():
+        yaml_file = carpeta / 'seminario.yml'
+        if yaml_file.exists():
+            with open(yaml_file, 'r', encoding='utf-8') as f:
+                data = yaml.safe_load(f)
+                data['_carpeta'] = carpeta.name
+                data['_tipo'] = 'completo'
+                seminarios.append(data)
+        else:
+            # Seminario antiguo solo con PDF
+            pdfs = list(carpeta.glob('*.pdf'))
+            if pdfs:
+                partes = carpeta.name.split('-')
+                if len(partes) >= 3:
+                    año = partes[0]
+                    semestre = partes[1]
+                    tema = ' '.join(partes[2:]).replace('-', ' ').title()
+                    seminarios.append({
+                        'info': {
+                            'titulo': tema,
+                            'subtitulo': f'{semestre.title()} {año}',
+                            'ponente': '-',
+                            'descripcion': 'Seminario archivado.',
+                            'estado': 'completado'
+                        },
+                        '_carpeta': carpeta.name,
+                        '_tipo': 'pdf',
+                        '_pdf': pdfs[0].name
+                    })
 
-- **Ponente**: Estudiante 1
-- **Descripción**: Introducción a la teoría de categorías y sus aplicaciones en matemáticas.
-- **Materiales**: [Acceder a los materiales](seminarios/2025-otono-categorias/index.qmd)
+# Extraer año de la carpeta y agrupar por curso académico
+def get_curso(carpeta):
+    partes = carpeta.split('-')
+    if len(partes) >= 2:
+        año = int(partes[0])
+        semestre = partes[1].lower()
+        if semestre == 'primavera':
+            return f"{año-1}-{año}"
+        else:
+            return f"{año}-{año+1}"
+    return "Otros"
 
----
+def get_orden_semestre(carpeta):
+    """Otoño = 0, Primavera = 1 para ordenar dentro del curso"""
+    partes = carpeta.split('-')
+    if len(partes) >= 2:
+        semestre = partes[1].lower()
+        return 0 if semestre == 'otono' else 1
+    return 0
 
-## Curso 2024-2025
+# Agrupar por curso
+cursos = {}
+for sem in seminarios:
+    curso = get_curso(sem['_carpeta'])
+    if curso not in cursos:
+        cursos[curso] = []
+    cursos[curso].append(sem)
 
-### Primavera 2025: Análisis Funcional
+# Ordenar seminarios dentro de cada curso
+for curso in cursos:
+    cursos[curso].sort(key=lambda x: get_orden_semestre(x['_carpeta']))
 
-- **Ponente**: Estudiante 2
-- **Descripción**: Espacios de Banach y operadores lineales.
-- **Materiales**: [Descargar PDF](seminarios/2025-primavera-funcional/notas.pdf)
+# Ordenar cursos (más reciente primero)
+cursos_ordenados = sorted(cursos.keys(), reverse=True)
 
-### Otoño 2024: Topología Algebraica
+# Estado badges
+estado_badge = {
+    'planificado': '🗓️ Planificado',
+    'en-curso': '🔄 En curso',
+    'completado': '✅ Completado'
+}
 
-- **Ponente**: Estudiante 3
-- **Descripción**: Grupos fundamentales y espacios de recubrimiento.
-- **Materiales**: [Descargar PDF](seminarios/2024-otono-topologia/notas.pdf)
-
----
+for curso in cursos_ordenados:
+    print(f"## Curso {curso}")
+    print("")
+    
+    for sem in cursos[curso]:
+        info = sem.get('info', {})
+        titulo = info.get('titulo', 'Sin título')
+        subtitulo = info.get('subtitulo', '')
+        ponente = info.get('ponente', '-')
+        descripcion = info.get('descripcion', '')
+        estado = info.get('estado', 'planificado')
+        badge = estado_badge.get(estado, estado)
+        
+        print(f"### {titulo}")
+        print(f"*{subtitulo}*")
+        print("")
+        print(f"- **Ponente**: {ponente}")
+        print(f"- **Estado**: {badge}")
+        
+        if descripcion:
+            print(f"- **Descripción**: {descripcion.strip()}")
+        
+        if sem['_tipo'] == 'completo':
+            print(f"- **Materiales**: [Acceder al seminario](seminarios/{sem['_carpeta']}/)")
+            
+            # Mostrar calendario de sesiones si existe
+            sesiones = sem.get('sesiones', [])
+            if sesiones:
+                print("")
+                print("**Sesiones:**")
+                print("")
+                print("| # | Fecha | Título | Estado |")
+                print("|---|-------|--------|--------|")
+                for s in sesiones:
+                    s_estado = {'completada': '✅', 'planificada': '📅', 'cancelada': '❌'}.get(s.get('estado', ''), '📅')
+                    fecha = s.get('fecha', 'TBD')
+                    print(f"| {s.get('numero', '-')} | {fecha} | {s.get('titulo', '')} | {s_estado} |")
+        else:
+            print(f"- **Materiales**: [Descargar PDF](seminarios/{sem['_carpeta']}/{sem['_pdf']})")
+        
+        print("")
+        print("---")
+        print("")
+```
 
 ## Cómo añadir un nuevo seminario
 
-Para añadir un nuevo seminario, consulta la [guía de contribución](CONTRIBUTING.md) o el archivo `_templates/` en el repositorio.
+Para añadir un nuevo seminario, consulta la [guía de contribución](CONTRIBUTING.md).
+
+**Resumen rápido:**
+
+1. Crea una carpeta: `seminarios/YYYY-semestre-tema/`
+2. Copia la plantilla: `cp _templates/seminario-nuevo/* seminarios/tu-carpeta/`
+3. Edita `seminario.yml` con la información del seminario
+4. ¡Listo! El seminario aparecerá automáticamente aquí

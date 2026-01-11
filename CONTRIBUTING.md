@@ -1,136 +1,102 @@
 # Contribuir al Seminario de Estudiantes de Matemáticas UB
 
-¡Gracias por tu interés en contribuir! Esta guía te ayudará a añadir nuevos seminarios o mejorar el sitio web.
+¡Gracias por tu interés en contribuir! Esta guía te ayudará a añadir nuevos seminarios.
 
-## Estructura del proyecto
+## 📂 Estructura del proyecto
 
 ```
 seminario-de-estudiantes-matematicas-ub/
-├── _quarto.yml           # Configuración del sitio
-├── index.qmd             # Página principal
-├── seminarios.qmd        # Archivo de todos los seminarios
-├── about.qmd             # Página "Sobre nosotros"
-├── seminarios/           # Carpeta con todos los seminarios
-│   ├── YYYY-semestre-tema/   # Carpeta de cada seminario
-│   │   ├── index.qmd         # Página principal del seminario
-│   │   ├── sesion1.qmd       # Sesiones individuales
-│   │   ├── notas.tex         # Archivos LaTeX (opcional)
-│   │   └── notas.pdf         # PDFs generados
-│   └── ...
-├── _templates/           # Plantillas para nuevos seminarios
-└── .github/workflows/    # CI/CD de GitHub Actions
+├── seminarios/
+│   └── YYYY-semestre-tema/
+│       ├── seminario.yml     # ⭐ EDITA SOLO ESTE ARCHIVO
+│       ├── index.qmd         # Página del seminario (no tocar)
+│       ├── sesion1_notas.pdf # PDFs de sesiones
+│       └── *.tex             # LaTeX (se compila a PDF)
+├── _templates/               # Plantillas
+└── .github/workflows/        # CI/CD
 ```
 
-## Cómo añadir un nuevo seminario
+## 🚀 Añadir un nuevo seminario
 
-### Opción 1: Seminario con múltiples sesiones (recomendado)
-
-1. **Crea una carpeta** en `seminarios/` con el formato `YYYY-semestre-tema`:
-   ```
-   seminarios/2026-primavera-geometria/
-   ```
-
-2. **Copia las plantillas** de `_templates/seminario-nuevo/`:
-   - `index.qmd` - Página principal del seminario
-   - `sesion.qmd` - Plantilla para cada sesión
-   - `notas.tex` - Plantilla LaTeX (opcional)
-
-3. **Edita los archivos** con tu contenido
-
-4. **Actualiza `index.qmd` y `seminarios.qmd`** para incluir el enlace al nuevo seminario
-
-### Opción 2: Seminario solo con PDF
-
-Si solo tienes un PDF de un seminario antiguo:
-
-1. **Crea una carpeta** en `seminarios/`:
-   ```
-   seminarios/2024-primavera-algebra/
-   ```
-
-2. **Añade el PDF** directamente a la carpeta:
-   ```
-   seminarios/2024-primavera-algebra/notas.pdf
-   ```
-
-3. **Actualiza `seminarios.qmd`** con un enlace directo al PDF
-
-## Trabajar con archivos LaTeX
-
-Los archivos `.tex` se compilan automáticamente a PDF en el pipeline de CI/CD. Para ello:
-
-1. Coloca tu archivo `.tex` en la carpeta del seminario
-2. El pipeline generará automáticamente el PDF
-3. Enlaza el PDF en tu `index.qmd`
-
-### Paquetes LaTeX disponibles
-
-El pipeline incluye TinyTeX con los paquetes más comunes. Si necesitas paquetes adicionales, añádelos al archivo `.github/workflows/publish.yml`.
-
-## Escribir contenido en Quarto
-
-### Matemáticas
-
-Usa LaTeX inline con `$...$` y bloques con `$$...$$`:
-
-```markdown
-La ecuación de Euler es $e^{i\pi} + 1 = 0$.
-
-$$
-\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
-$$
-```
-
-### Callouts
-
-```markdown
-::: {.callout-note}
-## Nota
-Contenido de la nota
-:::
-
-::: {.callout-tip}
-## Ejemplo
-Un ejemplo ilustrativo
-:::
-
-::: {.callout-important}
-## Teorema
-Enunciado del teorema
-:::
-
-::: {.callout-warning}
-## Advertencia
-Algo importante a tener en cuenta
-:::
-```
-
-## Flujo de trabajo Git
-
-1. **Fork** el repositorio
-2. **Crea una rama** para tus cambios:
-   ```bash
-   git checkout -b nuevo-seminario-geometria
-   ```
-3. **Haz tus cambios** y commits
-4. **Push** a tu fork
-5. **Crea un Pull Request**
-
-## Previsualización local
-
-Para ver el sitio en tu ordenador:
+### 1. Crear carpeta y copiar plantilla
 
 ```bash
-# Instalar Quarto: https://quarto.org/docs/get-started/
+mkdir seminarios/2026-primavera-geometria
+cp _templates/seminario-nuevo/* seminarios/2026-primavera-geometria/
+```
+
+### 2. Editar `seminario.yml`
+
+**Este es el único archivo que necesitas editar. El seminario aparecerá automáticamente en la página de inicio y en el archivo de seminarios.**
+
+```yaml
+info:
+  titulo: "Geometría Diferencial"
+  subtitulo: "Seminario de Primavera 2026"
+  descripcion: |
+    Introducción a las variedades diferenciables.
+  ponente: "Tu Nombre"
+  estado: "en-curso"  # planificado | en-curso | completado
+
+sesiones:
+  - numero: 1
+    titulo: "Variedades diferenciables"
+    fecha: "2026-02-15"
+    hora: "12:00"
+    lugar: "Aula T2"
+    estado: "completada"  # planificada | completada | cancelada
+    notas_pdf: "sesion1_notas.pdf"  # opcional
+    
+  - numero: 2
+    titulo: "Campos vectoriales"
+    fecha: "2026-02-22"
+    estado: "planificada"
+
+materiales:
+  notas_generales:
+    pdf: "notas.pdf"  # cuando termine el seminario
+  ejercicios: "ejercicios.pdf"
+
+bibliografia:
+  - autor: "Lee, J.M."
+    titulo: "Introduction to Smooth Manifolds"
+    año: 2012
+```
+
+### 3. Añadir materiales
+
+- Pon los PDFs en la misma carpeta
+- Los `.tex` se compilan automáticamente a PDF
+
+### 4. Actualizar páginas principales
+
+Añade el enlace en `index.qmd` y `seminarios.qmd`.
+
+## 📝 Actualizar un seminario existente
+
+Solo edita `seminario.yml`:
+
+| Acción | Qué hacer |
+|--------|-----------|
+| Añadir sesión | Nuevo elemento en `sesiones:` |
+| Marcar completada | `estado: "completada"` |
+| Añadir PDF | `notas_pdf: "archivo.pdf"` |
+| Seminario terminado | `estado: "completado"` en `info:` |
+
+## 📁 Seminarios antiguos (solo PDF)
+
+```bash
+mkdir seminarios/2024-primavera-algebra
+# Añade el PDF directamente y enlázalo desde seminarios.qmd
+```
+
+## 💻 Previsualización local
+
+```bash
+pip install pyyaml
 quarto preview
 ```
 
-## Convenciones de nombrado
+## ❓ ¿Preguntas?
 
-- **Carpetas de seminarios**: `YYYY-semestre-tema` (ej: `2026-otono-teoria-numeros`)
-- **Archivos de sesiones**: `sesionN.qmd` (ej: `sesion1.qmd`, `sesion2.qmd`)
-- **PDFs**: nombre descriptivo (ej: `notas.pdf`, `ejercicios.pdf`)
-
-## ¿Preguntas?
-
-Contacta con los organizadores del seminario o abre un Issue en GitHub.
+Abre un Issue en GitHub o contacta a los organizadores.

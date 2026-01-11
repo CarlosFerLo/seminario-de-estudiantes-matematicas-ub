@@ -23,17 +23,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install Python dependencies
+        run: |
+          pip install pyyaml
+
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
-
-      - name: Install LaTeX
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: "."
-          work_in_root_file_dir: true
-          continue_on_error: true
-          pre_compile: |
-            echo "LaTeX environment ready"
 
       - name: Install TinyTeX
         run: |

@@ -1,0 +1,11 @@
+{
+  "hash": "6cd7f72efc5370a8b5c3b3fd19b36aee",
+  "result": {
+    "markdown": "---\ntitle: \"{{< meta info.titulo >}}\"\nsubtitle: \"{{< meta info.subtitulo >}}\"\nmetadata-files:\n  - seminario.yml\n---\n\n\n::: {.callout-note}\n## 🔄 En curso\n**Ponente**: Estudiante 1\n:::\n\n## Descripción\n\nEste seminario ofrece una introducción a la teoría de categorías, \ncubriendo los conceptos fundamentales y sus aplicaciones en diversas \náreas de las matemáticas.\n\n\n## 📅 Calendario de Sesiones\n\n| # | Fecha | Título | Estado | Materiales |\n|---|-------|--------|--------|------------|\n| 1 | 2025-10-15 12:00 | **Categorías y Funtores** | ✅ completada | [PDF](sesion1_notas.pdf) · [TeX](sesion1_notas.tex) |\n| 2 | 2025-10-22 12:00 | **Transformaciones Naturales** | ✅ completada | [PDF](sesion2_notas.pdf) |\n| 3 | 2025-10-29 12:00 | **Límites y Colímites** | 📅 planificada | - |\n| 4 | 2025-11-05 12:00 | **Adjunciones** | 📅 planificada | - |\n\n## 📚 Materiales Generales\n\n- [Notas completas (PDF)](notas_completas.pdf)\n- [Notas completas (LaTeX)](notas_completas.tex)\n- [Ejercicios propuestos](ejercicios.pdf)\n\n## 📖 Bibliografía\n\n- Mac Lane, S. *Categories for the Working Mathematician* (1978)\n- Riehl, E. *[Category Theory in Context](https://math.jhu.edu/~eriehl/context.pdf)* (2016)\n- Leinster, T. *[Basic Category Theory](https://arxiv.org/abs/1612.09375)* (2014)\n\n\n## 📍 Lugar\n\nLas sesiones se realizan en el **Aula T2** de la Facultat de Matemàtiques i Informàtica de la UB, salvo que se indique lo contrario.\n\n---\n\n::: {.callout-tip}\n## ¿Tienes dudas?\nContacta con el ponente o con los organizadores del seminario.\n:::\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

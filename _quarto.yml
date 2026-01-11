@@ -3,6 +3,7 @@ project:
   output-dir: _site
   resources:
     - "seminarios/**/*.pdf"
+    - "seminarios/**/*.tex"
 
 website:
   title: "Seminario de Estudiantes de Matemáticas UB"
@@ -31,6 +32,7 @@ format:
 
 execute:
   freeze: auto
+  enabled: true
 
 
 

@@ -1,0 +1,2 @@
+# Dependencias Python para generar el sitio
+pyyaml>=6.0
